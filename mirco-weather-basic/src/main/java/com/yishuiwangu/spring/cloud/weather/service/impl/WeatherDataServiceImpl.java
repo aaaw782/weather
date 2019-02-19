@@ -16,10 +16,12 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
 @Service
-@Slf4j
 public class WeatherDataServiceImpl implements WeatherDataService {
 
     private static final String WEATHER_URL = "http://wthrcdn.etouch.cn/weather_mini?";
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public WeatherResponse getDataByCityId(String cityId) {
@@ -39,8 +41,12 @@ public class WeatherDataServiceImpl implements WeatherDataService {
      * @return
      */
     private WeatherResponse doGetWeather(String uri){
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> respString = restTemplate.getForEntity(uri, String.class);
+
+        RestTemplate restTemplate2 = new RestTemplate();
+        ResponseEntity<String> respString = restTemplate2.getForEntity(uri, String.class);
+
+        ResponseEntity<String> respString2 = restTemplate.getForEntity(uri, String.class);
+        System.out.println("respString2:"+respString2.getBody());
         String strBody = null;
         try{
             if(respString.getStatusCodeValue() == 200){
