@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.yishuiwangu.spring.cloud.weather'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	//mavenCentral()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//httpclient
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+	//lombok
+	compileOnly 'org.projectlombok:lombok:1.18.2'
+
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.56'
+
+
+}
