@@ -20,8 +20,9 @@ public class WeatherController {
         return weatherDataService.getDataByCityId(cityId);
     }
 
-    @GetMapping("/cityName/{cityName}")
-    public WeatherResponse getWeatherByCityName(@PathVariable("cityName") String cityName) {
+    @GetMapping("/cityName")
+    public WeatherResponse getWeatherByCityName(String cityName) {
+        System.out.println("进来了");
         return weatherDataService.getDataByCityName(cityName);
     }
 

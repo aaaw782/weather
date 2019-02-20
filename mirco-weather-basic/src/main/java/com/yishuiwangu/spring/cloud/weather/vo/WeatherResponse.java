@@ -1,7 +1,7 @@
 package com.yishuiwangu.spring.cloud.weather.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+
 
 import java.io.Serializable;
 
