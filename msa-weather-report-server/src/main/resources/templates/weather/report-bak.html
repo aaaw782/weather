@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SleepGod的天气预报</title>
+</head>
+<body>
+
+<h3 th:text="${reportModel.title}">SleepGod</h3>
+<select>
+    <option th:each="city : ${reportModel.cityList}"
+            th:value="${city.cityId}" th:text="${city.cityName}"
+            th:selected="${city.cityId eq reportModel.cityId}"></option>
+</select>
+
+<h1 th:text="${reportModel.report.city}">城市</h1>
+<div>
+    <p>
+        当前温度：<span th:text="${reportModel.report.wendu}"></span>
+    </p>
+</div>
+<div>
+    <p>
+        温馨提示：<span th:text="${reportModel.report.ganmao}"></span>
+    </p>
+</div>
+
+<div th:each="forecast: ${reportModel.report.forecast}">
+    <div>
+        <p class="card-text" th:text="${forecast.date}">日期</p>
+        <p class="card-text" th:text="${forecast.type}">天气类型</p>
+        <p class="card-text" th:text="${forecast.high}">最高温度</p>
+        <p class="card-text" th:text="${forecast.low}">最低温度</p>
+        <p class="card-text" th:text="${forecast.fengxiang}">风向</p>
+    </div>
+</div>
+
+
+</body>
+</html>
